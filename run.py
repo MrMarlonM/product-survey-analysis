@@ -20,7 +20,6 @@ def get_user_input():
         
         raw_data = pd.read_csv(BytesIO(response.content))
         print("The file was loaded successfully!\n")
-        print("Starting now to analyze..\n")
         return(raw_data)
     except requests.exceptions.RequestException as e:
         print(f"Couldn't download file. Please make sure URL is correct: {e}")
@@ -32,5 +31,12 @@ def get_user_input():
         print(f"Unexpected error: {e}")
         return None
 
-raw_data = get_user_input()
-print(raw_data)
+
+def check_data(data):
+
+
+def main():
+    raw_data = get_user_input()
+    clean_data = check_data(raw_data)
+
+main()
