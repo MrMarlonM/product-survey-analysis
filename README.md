@@ -12,5 +12,5 @@ calculate the information you need.
 ### Frequent Visitor 
 - I want to analyze more surveys easily
 - I want to download the result
-- I want to get more in-depth analysis
+- I want to get a more in-depth analysis
 
