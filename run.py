@@ -14,10 +14,13 @@ def get_user_input():
     url = input('Put in your URL here:')
 
     try:
+        print("Loading your file...\n")
         response = requests.get(url)
         response.raise_for_status()
         
         raw_data = pd.read_csv(BytesIO(response.content))
+        print("The file was loaded successfully!\n")
+        print("Starting now to analyze..\n")
         return(raw_data)
     except requests.exceptions.RequestException as e:
         print(f"Couldn't download file. Please make sure URL is correct: {e}")
