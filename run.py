@@ -50,7 +50,7 @@ def check_data(data):
     Checks that the answers are in the allowed range.
     Removes rows with invalid data and rows with missing data
     """
-    print("Checking and cleaning the data...")
+    print("Checking and cleaning the data...\n")
 
     try:
         # Checks with two if statements that "Products" column exists and questions exist
@@ -70,6 +70,7 @@ def check_data(data):
         # Remove rows where values are missing
         data.dropna(inplace=True)
 
+        print("Great, your data is now clean and ready for analysis.\n")
         return data
     
     # Returns one of the defined ValueError catched by the two if functions
@@ -88,7 +89,7 @@ def main():
     Runs the program and summons all the needed functions in the correct order
     """
     raw_data = get_user_input()
-    print(raw_data)
     clean_data = check_data(raw_data)
-    print(clean_data)
+    
+
 main()
