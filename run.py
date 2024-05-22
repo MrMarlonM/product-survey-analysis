@@ -5,7 +5,7 @@ from io import BytesIO
 def get_user_input():
     """
     Gets the input from the user and checks for possible errors
-    happening whilst loading like a wrong url and whilst parsing
+    happening whilst loading, like a wrong url and whilst parsing
     like a wrong format. Afterwards it returns the raw data
     """
     print("You need to put in the url of your survery data file")
@@ -84,12 +84,23 @@ def check_data(data):
         return None
 
 
+def count_questions(data):
+    """
+    This function will count the number of questions in the provided data,
+    to prepare for further analysis.
+    """
+    number_questions = 0
+    for col in data.columns.drop("Product"):
+        number_questions += 1
+    return number_questions
+
+
 def main():
     """
     Runs the program and summons all the needed functions in the correct order
     """
     raw_data = get_user_input()
     clean_data = check_data(raw_data)
-    
+    number_questions = count_questions(clean_data) 
 
 main()
