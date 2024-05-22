@@ -91,6 +91,7 @@ def transform_data(data):
     """
     The function transforms text data into numerical values to calculate values
     """
+    # Extra answer options need to be added here together with numerical value
     for col in data.columns.drop("Product"):
         data[col] = data[col].replace(
             ["Very unhappy", "Unhappy", "Neutral", "Happy", "Very happy"], [1, 2, 3, 4, 5]
@@ -134,13 +135,32 @@ def count_products(data):
 def calculate_mean_questions(data):
     """
     Function to calculate the mean value for the answers given for each question
-    and gives out a pandas series with the calculated values
+    and prints the mean values to the console next to the questions
     """
     print("Calculating mean values for individual questions...\n")
 
     mean_questions = data.drop(columns=["Product"]).mean()
-    return mean_questions
+    print("Here are the mean values for each question:")
+    print("1 = Very unhappy")
+    print("2 = Unhappy")
+    print("3 = Neutral")
+    print("4 = Happy")
+    print("5 = Very happy\n")
+    print(f"{mean_questions}\n")
 
+def find_mode_questions(data):
+    """
+    Function to find the mode for each question asked, and print the findings
+    to the console in a readable and clean manner
+    """
+    print("Finding mode for each question...\n")
+    mode_questions = data.drop(columns=["Product"]).mode()
+    # Prints the mode for each question more readable to the console than the 
+    # Dataframe that gets returned to mode_questions
+    print("Here is the mode for each question:")
+    for question, mode in mode_questions.iloc[0].items():
+        print(f"{question}: {mode}")
+    print("\n")
 
 def main():
     """
@@ -151,8 +171,8 @@ def main():
     return_questions(clean_data) 
     list_products = count_products(clean_data)
     num_data = transform_data(clean_data)
-    mean_questions = calculate_mean_questions(num_data)
-    print(mean_questions)
+    calculate_mean_questions(num_data)
+    find_mode_questions(clean_data)
     
 
 main()
