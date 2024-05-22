@@ -92,11 +92,12 @@ def transform_data(data):
     The function transforms text data into numerical values to calculate values
     """
     # Extra answer options need to be added here together with numerical value
+    new_data = data.copy()
     for col in data.columns.drop("Product"):
-        data[col] = data[col].replace(
+        new_data[col] = new_data[col].replace(
             ["Very unhappy", "Unhappy", "Neutral", "Happy", "Very happy"], [1, 2, 3, 4, 5]
         )
-    return data
+    return new_data
 
 
 def return_questions(data):
