@@ -60,7 +60,7 @@ def check_data(data):
             raise ValueError("There are no questions in the data, please add at least one")  
         
         # The allowed answers for the survey can be changed here
-        allowed_answers = ["Very unhappy", "Unhappy", "Happy", "Very happy"]
+        allowed_answers = ["Very unhappy", "Unhappy", "Neutral", "Happy", "Very happy"]
         
         # Checks that the provided answers are part of the allowed options
         # for every column exept the "Product" column
@@ -93,7 +93,7 @@ def transform_data(data):
     """
     for col in data.columns.drop("Product"):
         data[col] = data[col].replace(
-            ["Very unhappy", "Unhappy", "Happy", "Very happy"], [1, 2, 3, 4]
+            ["Very unhappy", "Unhappy", "Neutral", "Happy", "Very happy"], [1, 2, 3, 4, 5]
         )
     return data
 
