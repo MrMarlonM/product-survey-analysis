@@ -92,7 +92,21 @@ def count_questions(data):
     number_questions = 0
     for col in data.columns.drop("Product"):
         number_questions += 1
+    print(f"Your data holds {number_questions} different questions.\n")
     return number_questions
+
+def count_products(data):
+    """
+    Takes the products column of the provided data and returns a list of every
+    individual product listed in the data
+    """
+    list_products = data['Product'].unique().tolist()
+    counter = 1
+    for product in list_products:
+        print(f"Product {counter}: {product}")
+        counter +=1
+    return list_products
+
 
 
 def main():
@@ -102,5 +116,7 @@ def main():
     raw_data = get_user_input()
     clean_data = check_data(raw_data)
     number_questions = count_questions(clean_data) 
+    list_products = count_products(clean_data)
+    print(list_products)
 
 main()
