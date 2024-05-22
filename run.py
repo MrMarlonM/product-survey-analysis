@@ -84,6 +84,20 @@ def check_data(data):
         return None
 
 
+# This line of code opts-in to a future change how pandas handles downcasting
+# with this line of code the "FutureWarning:.." in the terminal doesn't get shown
+pd.set_option('future.no_silent_downcasting', True)
+def transform_data(data):
+    """
+    The function transforms text data into numerical values to calculate values
+    """
+    for col in data.columns.drop("Product"):
+        data[col] = data[col].replace(
+            ["Very unhappy", "Unhappy", "Happy", "Very happy"], [1, 2, 3, 4]
+        )
+    return data
+
+
 def count_questions(data):
     """
     This function will count the number of questions in the provided data,
@@ -108,7 +122,6 @@ def count_products(data):
     return list_products
 
 
-
 def main():
     """
     Runs the program and summons all the needed functions in the correct order
@@ -117,6 +130,7 @@ def main():
     clean_data = check_data(raw_data)
     number_questions = count_questions(clean_data) 
     list_products = count_products(clean_data)
-    print(list_products)
+    num_data = transform_data(clean_data)
+    print(num_data)
 
 main()
