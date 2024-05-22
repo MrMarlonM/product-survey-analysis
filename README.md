@@ -25,10 +25,18 @@ calculate the information you need.
 - The allowed answer options for this version are:
     - Very unhappy
     - Unhappy
+    - Neutral
     - Happy
     - Very happy
 
 ## Bugs
 ### Solved Bugs
-- Bug 1: Whilst testing the `get_user_input() function` and the `check_data() function` combined, a set of data that had no answer options in it got returned. After checking that the data returned from the `get_user_input() function` was correct, the problem could be narrowed down to the `check_data() function`. After checking that the code is correct and contains no typos, the error was found in the case sensitivity of the `allowed_answer list` and the data input it got compared against.  
-Solution: the problem was solved for this version by changing the content of the `allowed_answer_list` so that it matches the data. Also, the exact kind of data expected by the program gets stated in the readme under the point `Data Requirements`.
+- *Bug 1:*  
+Whilst testing the `get_user_input() function` and the `check_data() function` combined, a set of data that had no answer options in it was returned. After checking that the data returned from the `get_user_input() function` was correct, the problem could be narrowed down to the `check_data() function`. After checking that the code is correct and contains no typos, the error was found in the case sensitivity of the `allowed_answer list` and the data input it got compared against.  
+*Solution:*   
+The problem was solved for this version by changing the content of the `allowed_answer_list` so that it matches the data. Also, the exact kind of data expected by the program gets stated in the readme under the point `Data Requirements`.
+
+- *Bug 2:*  
+The initial version of `return_questions()` was called `count_questions()` and should have counted the number of questions and printed the individual questions to the console. The first part worked, but the second didn't. It only printed a complete list of all column headings to the console, instead of each question separately.
+*Solution:*  
+To solve the problem, the function was remodeled and simplified. Instead of a `for loop` that counts the number of questions, the length of `data_columns` gets subtracted by one. Also, the fact was used, that the `pandas library` allows it to print out the column heading directly through a `for loop`like this: `for col in data.columns: print col`. 
