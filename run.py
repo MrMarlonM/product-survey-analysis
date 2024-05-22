@@ -122,6 +122,15 @@ def count_products(data):
     return list_products
 
 
+def calculate_mean_questions(data):
+    """
+    Function to calculate the mean value for the answers given for each question
+    and gives out a pandas series with the calculated values
+    """
+    mean_questions = data.drop(columns=["Product"]).mean()
+    return mean_questions
+
+
 def main():
     """
     Runs the program and summons all the needed functions in the correct order
@@ -131,6 +140,8 @@ def main():
     number_questions = count_questions(clean_data) 
     list_products = count_products(clean_data)
     num_data = transform_data(clean_data)
-    print(num_data)
+    mean_questions = calculate_mean_questions(num_data)
+    print(mean_questions)
+    
 
 main()
