@@ -98,16 +98,23 @@ def transform_data(data):
     return data
 
 
-def count_questions(data):
+def return_questions(data):
     """
-    This function will count the number of questions in the provided data,
-    to prepare for further analysis.
+    This function will count the number of questions in the provided data and
+    return the number of questions asked together with the individual questions 
+    to the terminal
     """
-    number_questions = 0
+    print("Here is an overview of the data provided:\n")
+
+    number_questions = len(data.columns) - 1
+    print(f"Your survey asks {number_questions} different questions:")
+    
+    i = 1
     for col in data.columns.drop("Product"):
-        number_questions += 1
-    print(f"Your data holds {number_questions} different questions.\n")
-    return number_questions
+        print(f"Question{i}: {col}")
+        i += 1
+    print("\n")
+
 
 def count_products(data):
     """
@@ -116,9 +123,11 @@ def count_products(data):
     """
     list_products = data['Product'].unique().tolist()
     counter = 1
+    print("The following products are part of your survey:")
     for product in list_products:
         print(f"Product {counter}: {product}")
         counter +=1
+    print("\n")    
     return list_products
 
 
@@ -127,6 +136,8 @@ def calculate_mean_questions(data):
     Function to calculate the mean value for the answers given for each question
     and gives out a pandas series with the calculated values
     """
+    print("Calculating mean values for individual questions...\n")
+
     mean_questions = data.drop(columns=["Product"]).mean()
     return mean_questions
 
@@ -137,7 +148,7 @@ def main():
     """
     raw_data = get_user_input()
     clean_data = check_data(raw_data)
-    number_questions = count_questions(clean_data) 
+    return_questions(clean_data) 
     list_products = count_products(clean_data)
     num_data = transform_data(clean_data)
     mean_questions = calculate_mean_questions(num_data)
