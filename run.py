@@ -131,6 +131,13 @@ def count_products(data):
     print("\n")    
     return list_products
 
+def print_legend():
+    print("Legend for results of analysis:")
+    print("1 = Very unhappy")
+    print("2 = Unhappy")
+    print("3 = Neutral")
+    print("4 = Happy")
+    print("5 = Very happy\n")
 
 def calculate_mean_questions(data):
     """
@@ -140,12 +147,7 @@ def calculate_mean_questions(data):
     print("Calculating mean values for individual questions...\n")
 
     mean_questions = data.drop(columns=["Product"]).mean()
-    print("Here are the mean values for each question:")
-    print("1 = Very unhappy")
-    print("2 = Unhappy")
-    print("3 = Neutral")
-    print("4 = Happy")
-    print("5 = Very happy\n")
+    print("Here are the mean values for each question:\n")
     print(f"{mean_questions}\n")
 
 def find_mode_questions(data):
@@ -157,7 +159,7 @@ def find_mode_questions(data):
     mode_questions = data.drop(columns=["Product"]).mode()
     # Prints the mode for each question more readable to the console than the 
     # Dataframe that gets returned to mode_questions
-    print("Here is the mode for each question:")
+    print("Here is the mode for each question:\n")
     for question, mode in mode_questions.iloc[0].items():
         print(f"{question}: {mode}")
     print("\n")
@@ -171,8 +173,9 @@ def main():
     return_questions(clean_data) 
     list_products = count_products(clean_data)
     num_data = transform_data(clean_data)
+    print_legend()
     calculate_mean_questions(num_data)
     find_mode_questions(clean_data)
-    
+
 
 main()
