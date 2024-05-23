@@ -172,16 +172,33 @@ def find_mode_questions(data):
 def calculate_mean_products(data, list_products):
     """
     The function calculates the mean over all questions for each each seperate
-    product and gives out a pandas series to the terminal
+    product and gives the values out to the terminal
     """
+    print("Calculating mean values for each product...\n")
+
     mean_products = {}
     for product in list_products:
         # Creates new dataframe where only the rows of the wanted product are left
-        mean_product_row = data[data["Product"] == product].drop(columns=["Product"])
+        product_row = data[data["Product"] == product].drop(columns=["Product"])
         # Calculates the mean for each row and then the mean of the means of each row
-        mean_product = mean_product_row.mean(axis=1).mean()
+        mean_product = product_row.mean(axis=1).mean()
         mean_products[product] = mean_product
+    
+    print("Here are the mean values for each product:\n")
     print(pd.Series(mean_products))
+    print("\n")
+
+
+def find_mode_products(data, list_products):
+    """
+    This function finds the mode for each product and gives them out to the terminal
+    """
+    for product in list_products:
+        product_row = data[data["Product"] == product].drop(columns=["Product"])
+        all_rows = product_row.stack()
+        mode_product = all_rows.mode()[0]
+        print(f"{product}: {mode_product}")
+
 
 def main():
     """
@@ -196,6 +213,6 @@ def main():
     calculate_mean_questions(num_data)
     calculate_mean_products(num_data, list_products)
     find_mode_questions(clean_data)
-
+    find_mode_products(clean_data, list_products)
 
 main()
