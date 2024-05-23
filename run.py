@@ -8,9 +8,14 @@ def get_user_input():
     happening whilst loading, like a wrong url and whilst parsing
     like a wrong format. Afterwards it returns the raw data
     """
-    print("You need to put in the url of your survery data file")
-    print("It needs to be the url to the raw data")
-    print("The file needs to be in the format CSV (Comma-Separated Values)")
+    print(f"""
+You need to put in the direct URL to your survey data, stored publicly.
+The link must provide the raw data, not the document to download.
+You can use for example github or dropbox and click on raw data to open the 
+right URL. 
+The file needs to be formatted as CSV (Comma-Separated Values).
+After providing the file, the analysis will run and put out the calculated values.
+    """)
     url = input('Put in your URL here:')
     
     # Try part requests the data from stated url and checks if the HTTP status
@@ -89,7 +94,8 @@ def check_data(data):
 pd.set_option('future.no_silent_downcasting', True)
 def transform_data(data):
     """
-    The function transforms text data into numerical values to calculate values
+    The function transforms text data into numerical values
+    to calculate values
     """
     # Extra answer options need to be added here together with numerical value
     new_data = data.copy()
@@ -134,12 +140,14 @@ def count_products(data):
 
 
 def print_legend():
-    print("Legend for results of analysis:")
-    print("1 = Very unhappy")
-    print("2 = Unhappy")
-    print("3 = Neutral")
-    print("4 = Happy")
-    print("5 = Very happy\n")
+    print(f"""
+Legend for results of analysis:\n
+    1 = Very unhappy
+    2 = Unhappy
+    3 = Neutral
+    4 = Happy
+    5 = Very happy\n
+    """)
 
 
 def calculate_mean_questions(data):
@@ -150,8 +158,11 @@ def calculate_mean_questions(data):
     print("Calculating mean values for individual questions...\n")
 
     mean_questions = data.drop(columns=["Product"]).mean()
-    print("Here are the mean values for each question:\n")
-    print(f"{mean_questions}\n")
+    
+    print(f"""
+Here are the mean values for each question:\n
+{mean_questions}\n
+    """)
 
 
 def find_mode_questions(data):
@@ -184,18 +195,22 @@ def calculate_mean_products(data, list_products):
         mean_product = product_row.mean(axis=1).mean()
         mean_products[product] = mean_product
     
-    print("Here are the mean values for each product:\n")
-    print(pd.Series(mean_products))
-    print("\n")
+    print(f"""
+Here are the mean values for each product:\n
+pd.Series(mean_products)\n
+    """)
 
 
 def find_mode_products(data, list_products):
     """
-    This function finds the mode for each product and gives them out to the terminal
+    This function finds the mode for each product and
+    gives them out to the terminal
     """
-    print("Finding the mode for each product...\n")
+    print(f"""
+Finding the mode for each product...\n
+Here is the mode for each product:\n
+    """)
 
-    print("Here is the mode for each product:\n")
     for product in list_products:
         product_row = data[data["Product"] == product].drop(columns=["Product"])
         all_rows = product_row.stack()
@@ -205,7 +220,8 @@ def find_mode_products(data, list_products):
 
 def main():
     """
-    Runs the program and summons all the needed functions in the correct order
+    Runs the program and summons all the needed functions
+    in the correct order
     """
     raw_data = get_user_input()
     clean_data = check_data(raw_data)
