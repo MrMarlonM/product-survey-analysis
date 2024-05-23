@@ -176,7 +176,10 @@ def calculate_mean_products(data, list_products):
     """
     mean_products = {}
     for product in list_products:
-        mean_product = data[data["Product"] == product].drop(columns=["Product"]).mean(axis=1).mean()
+        # Creates new dataframe where only the rows of the wanted product are left
+        mean_product_row = data[data["Product"] == product].drop(columns=["Product"])
+        # Calculates the mean for each row and then the mean of the means of each row
+        mean_product = mean_product_row.mean(axis=1).mean()
         mean_products[product] = mean_product
     print(pd.Series(mean_products))
 
