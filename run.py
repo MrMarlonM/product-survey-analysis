@@ -193,6 +193,9 @@ def find_mode_products(data, list_products):
     """
     This function finds the mode for each product and gives them out to the terminal
     """
+    print("Finding the mode for each product...\n")
+
+    print("Here is the mode for each product:\n")
     for product in list_products:
         product_row = data[data["Product"] == product].drop(columns=["Product"])
         all_rows = product_row.stack()
