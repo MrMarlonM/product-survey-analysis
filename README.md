@@ -39,7 +39,7 @@ The problem was solved for this version by changing the content of the `allowed_
 - *Bug 2:*  
 The initial version of `return_questions()` was called `count_questions()` and should have counted the number of questions and printed the individual questions to the console. The first part worked, but the second didn't. It only printed a complete list of all column headings to the console, instead of each question separately.
 *Solution:*  
-To solve the problem, the function was remodeled and simplified. Instead of a `for loop` that counts the number of questions, the length of `data_columns` gets subtracted by one. Also, the fact was used, that the `pandas library` allows it to print out the column heading directly through a `for loop`like this: `for col in data.columns: print col`. 
+To solve the problem, the function was remodeled and simplified. Instead of a `for loop` that counts the number of questions, the length of `data_columns` gets subtracted by one. Also, the fact was used, that the `pandas library` allows it to print out the column heading directly through a `for loop` like this: `for col in data.columns: print col`. 
 
 - *Bug 3:*  
 The function `find_mode_questions(clean_data)` returned numerical values instead of a string. The problem could be tracked down to the `transform_data()` function. Here the `clean_data` variable was changed to a numerical value. But because no new variable was assigned the original variable was overwritten.  

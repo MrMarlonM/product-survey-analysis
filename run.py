@@ -34,7 +34,7 @@ def get_user_input():
     
     # Displays error when file isn't correctly structured or data type is wrong
     except pd.errors.ParserError as e:
-        print(f"Couldn't read file. Please ensure the file is in CSV format and try again: {e}")
+        print(f"Couldn't read file. Please ensure the file is a CSV file and try again: {e}")
         return None
     
     # Displays all errors that could happen and aren't catched before
@@ -132,6 +132,7 @@ def count_products(data):
     print("\n")    
     return list_products
 
+
 def print_legend():
     print("Legend for results of analysis:")
     print("1 = Very unhappy")
@@ -139,6 +140,7 @@ def print_legend():
     print("3 = Neutral")
     print("4 = Happy")
     print("5 = Very happy\n")
+
 
 def calculate_mean_questions(data):
     """
@@ -150,6 +152,7 @@ def calculate_mean_questions(data):
     mean_questions = data.drop(columns=["Product"]).mean()
     print("Here are the mean values for each question:\n")
     print(f"{mean_questions}\n")
+
 
 def find_mode_questions(data):
     """
@@ -165,6 +168,18 @@ def find_mode_questions(data):
         print(f"{question}: {mode}")
     print("\n")
 
+
+def calculate_mean_products(data, list_products):
+    """
+    The function calculates the mean over all questions for each each seperate
+    product and gives out a pandas series to the terminal
+    """
+    mean_products = {}
+    for product in list_products:
+        mean_product = data[data["Product"] == product].drop(columns=["Product"]).mean(axis=1).mean()
+        mean_products[product] = mean_product
+    print(pd.Series(mean_products))
+
 def main():
     """
     Runs the program and summons all the needed functions in the correct order
@@ -176,6 +191,7 @@ def main():
     num_data = transform_data(clean_data)
     print_legend()
     calculate_mean_questions(num_data)
+    calculate_mean_products(num_data, list_products)
     find_mode_questions(clean_data)
 
 
