@@ -118,7 +118,6 @@ def return_questions(data):
     to the terminal
     """
     print("Here is an overview of the data provided:\n")
-
     number_questions = len(data.columns) - 1
     print(f"Your survey asks {number_questions} different questions:")
     
@@ -224,6 +223,12 @@ Here is the mode for each product:\n
 
 
 def start_analysis(num_data, clean_data, list_products):
+    """
+    This function analyzes the data and calculates the mean and mode for each 
+    question and product. It also provides a menu where the user can choose to 
+    watch each analysis individually or to insert a new file for analysis
+    """
+        #Deefine parameters for sub menu and back menu/button
         sub_options = [
         "[q] Analysis Questions", "[p] Analysis Products", "[n] Insert new File"
         ]
@@ -240,6 +245,7 @@ def start_analysis(num_data, clean_data, list_products):
             find_mode_questions(clean_data)
             back_sub_index = back_sub_menu.show()
             back_sub_choice = back_sub[back_sub_index]
+            # Offer option to go back to sub menu
             if back_sub_choice == "[b] Back to Sub Menu":
                 start_analysis(num_data, clean_data, list_products)
         # Start analysis for products
@@ -249,6 +255,7 @@ def start_analysis(num_data, clean_data, list_products):
             find_mode_products(clean_data, list_products)
             back_sub_index = back_sub_menu.show()
             back_sub_choice = back_sub[back_sub_index]
+            # Offer option to go back to sub menu
             if back_sub_choice == "[b] Back to Sub Menu":
                 start_analysis(num_data, clean_data, list_products)
         # Goes back to main menu to insert new file
@@ -282,12 +289,13 @@ or press the "e" button on your keyboard.
     main_menu_choice = main_options[main_menu_index]
     # Start the analysis
     if main_menu_choice == "[s] Start":
-            # Get data from user and prepare data for analysis
+        # Get data from user and prepare data for analysis
         raw_data = get_user_input()
         clean_data = check_data(raw_data)
         return_questions(clean_data) 
         list_products = count_products(clean_data)
         num_data = transform_data(clean_data)
+        #Analyze the given data
         start_analysis(num_data, clean_data, list_products)
     # Shows the explanation how to use the program properly
     elif main_menu_choice == "[e] Show Explanation":
@@ -303,11 +311,13 @@ or press the "e" button on your keyboard.
     After providing the file, the analysis will run and put out the calculated values.
         """)
         print_legend()
+        #Offer a menu/button to go back to main menu
         back_main_menu_index = back_main_menu.show()
         back_main_menu_choice = back_main[back_main_menu_index]
         if back_main_menu_choice == "[b] Back to Main Menu":
             main()
 
 
+#Start the program
 if __name__=="__main__":
     main()
