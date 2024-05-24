@@ -13,12 +13,14 @@ def get_user_input():
     # Loops and asks for url until valid url is given as input
     while True:
         print(f"""
+--------------------------------------------------------------------------------        
 You need to put in the direct URL to your survey data, stored publicly.
 The link must provide the raw data, not the document to download.
 You can use for example github or dropbox and click on "raw data" to open the 
 right URL. 
 The file needs to be formatted as CSV (Comma-Separated Values).
-After providing the file, the analysis will run and put out the calculated values.
+After providing the file, the analysis will run and put out the
+calculated values.
         """)
         url = input('Put in your URL here:')
         
@@ -106,7 +108,8 @@ def transform_data(data):
     new_data = data.copy()
     for col in data.columns.drop("Product"):
         new_data[col] = new_data[col].replace(
-            ["Very unhappy", "Unhappy", "Neutral", "Happy", "Very happy"], [1, 2, 3, 4, 5]
+            ["Very unhappy", "Unhappy", "Neutral", "Happy", "Very happy"], 
+            [1, 2, 3, 4, 5]
         )
     return new_data
 
@@ -125,7 +128,6 @@ def return_questions(data):
     for col in data.columns.drop("Product"):
         print(f"Question{i}: {col}")
         i += 1
-    print("\n")
 
 
 def count_products(data):
@@ -159,8 +161,6 @@ def calculate_mean_questions(data):
     Function to calculate the mean value for the answers given for each question
     and prints the mean values to the console next to the questions
     """
-    print("Calculating mean values for individual questions...\n")
-
     mean_questions = data.drop(columns=["Product"]).mean()
     
     print(f"""
@@ -174,7 +174,6 @@ def find_mode_questions(data):
     Function to find the mode for each question asked, and print the findings
     to the console in a readable and clean manner
     """
-    print("Finding mode for each question...\n")
     mode_questions = data.drop(columns=["Product"]).mode()
     # Prints the mode for each question more readable to the console than the 
     # Dataframe that gets returned to mode_questions
@@ -189,13 +188,11 @@ def calculate_mean_products(data, list_products):
     The function calculates the mean over all questions for each each seperate
     product and gives the values out to the terminal
     """
-    print("Calculating mean values for each product...\n")
-
     mean_products = {}
     for product in list_products:
-        # Creates new dataframe where only the rows of the wanted product are left
+        # Creates new dataframe where only rows of the wanted product are left
         product_row = data[data["Product"] == product].drop(columns=["Product"])
-        # Calculates the mean for each row and then the mean of the means of each row
+        # Calculates the mean of the means of each row
         mean_product = product_row.mean(axis=1).mean()
         mean_products[product] = mean_product
     
@@ -210,10 +207,7 @@ def find_mode_products(data, list_products):
     This function finds the mode for each product and
     gives them out to the terminal
     """
-    print(f"""
-Finding the mode for each product...\n
-Here is the mode for each product:\n
-    """)
+    print(f"Here is the mode for each product:\n")
 
     for product in list_products:
         product_row = data[data["Product"] == product].drop(columns=["Product"])
@@ -229,7 +223,10 @@ def start_analysis(num_data, clean_data, list_products):
     watch each analysis individually or to insert a new file for analysis
     """
     #Deefine parameters for sub menu and back menu/button
-    sub_options = ["[q] Analysis Questions", "[p] Analysis Products", "[n] Insert new File"]
+    sub_options = [
+        "[q] Analysis Questions", "[p] Analysis Products", 
+        "[n] Insert new File"
+        ]
     back_sub = ["[b] Back to Sub Menu"]
     sub_menu = TerminalMenu(sub_options)
     back_sub_menu = TerminalMenu(back_sub)
@@ -268,6 +265,8 @@ def main():
     """
     # Welcome statement and explanation what the user should do
     print(f"""
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Hello and welcome to the product-survey-analysis!
 If you already now how it works click on "Start"
 or press the "s" button on your keyboard.
@@ -302,11 +301,12 @@ or press the "e" button on your keyboard.
     stored publicly aviable.
 
 2. The link must provide the raw data, not the document to download.
-    You can use for example github or dropbox and click on "raw data" to open the 
-    right URL. 
+    You can use for example github or dropbox and click on "raw data" 
+    to open the right URL. 
 
 3. The file needs to be formatted as CSV (Comma-Separated Values).
-    After providing the file, the analysis will run and put out the calculated values.
+    After providing the file, the analysis will run and put out the 
+    calculated values.
         """)
         print_legend()
         #Offer a menu/button to go back to main menu
