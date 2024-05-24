@@ -2,6 +2,7 @@ import requests
 import pandas as pd
 from io import BytesIO
 import validators
+from simple_term_menu import TerminalMenu
 
 def get_user_input():
     """
@@ -9,6 +10,7 @@ def get_user_input():
     happening whilst loading, like a wrong url and whilst parsing
     like a wrong format. Afterwards it returns the raw data
     """
+    # Loops and asks for url until valid url is given as input
     while True:
         print(f"""
 You need to put in the direct URL to your survey data, stored publicly.
@@ -200,7 +202,7 @@ def calculate_mean_products(data, list_products):
     
     print(f"""
 Here are the mean values for each product:\n
-pd.Series(mean_products)\n
+{pd.Series(mean_products)}\n
     """)
 
 
@@ -226,15 +228,76 @@ def main():
     Runs the program and summons all the needed functions
     in the correct order
     """
-    raw_data = get_user_input()
-    clean_data = check_data(raw_data)
-    return_questions(clean_data) 
-    list_products = count_products(clean_data)
-    num_data = transform_data(clean_data)
-    print_legend()
-    calculate_mean_questions(num_data)
-    calculate_mean_products(num_data, list_products)
-    find_mode_questions(clean_data)
-    find_mode_products(clean_data, list_products)
+    # Welcome statement and explanation what the user should do
+    print(f"""
+Hello and welcome to the product-survey-analysis!
+If you already now how it works click on "Start"
+or press the "s" button on your keyboard.
+Should it be your first time, click on "Show Explanation"
+or press the "e" button on your keyboard.
+    """)
+    #Definition of options for different terminal menus
+    main_options = ["[s] Start", "[e] Show Explanation"]
+    sub_options = [
+        "[q] Analysis Questions", "[p] Analysis Products", "[n] Insert new File"
+        ]
+    back_main = ["[b] Back to Main Menu"]
+    back_sub = ["[b] Back to Sub Menu"]
+    
+    # Declares the different terminal menus
+    main_menu = TerminalMenu(main_options)
+    sub_menu = TerminalMenu(sub_options)
+    back_main_menu = TerminalMenu(back_main)
+    back_sub_menu = TerminalMenu(back_sub)
 
-main()
+    # Starts the Main Menu 
+    main_menu_index = main_menu.show()
+    main_menu_choice = main_options[main_menu_index]
+    # Start the analysis
+    if main_menu_choice == "[s] Start":
+        # Get data from user and prepare data for analysis
+        raw_data = get_user_input()
+        clean_data = check_data(raw_data)
+        return_questions(clean_data) 
+        list_products = count_products(clean_data)
+        num_data = transform_data(clean_data)
+        # Show submenu for individual analysis
+        sub_menu_index = sub_menu.show()
+        sub_menu_choice = sub_options[sub_menu_index]
+        # Start analysis for questions
+        if sub_menu_choice == "[q] Analysis Questions":
+            print_legend()
+            calculate_mean_questions(num_data)
+            find_mode_questions(clean_data)
+        
+        elif sub_menu_choice == "[p] Analysis Products":
+            print_legend()
+            calculate_mean_products(num_data, list_products)
+            find_mode_products(clean_data, list_products)
+        
+        elif sub_menu_choice == "[n] Insert new File":
+            main()
+
+
+    # Shows the explanation how to use the program properly
+    elif main_menu_choice == "[e] Show Explanation":
+        print(f"""
+1. You need to put in the direct URL to your survey data, which should be
+    stored publicly aviable.
+
+2. The link must provide the raw data, not the document to download.
+    You can use for example github or dropbox and click on "raw data" to open the 
+    right URL. 
+
+3. The file needs to be formatted as CSV (Comma-Separated Values).
+    After providing the file, the analysis will run and put out the calculated values.
+        """)
+        print_legend()
+        back_main_menu_index = back_main_menu.show()
+        back_main_menu_choice = back_main[back_main_menu_index]
+        if back_main_menu_choice == "[b] Back to Main Menu":
+            main()
+
+
+if __name__=="__main__":
+    main()
