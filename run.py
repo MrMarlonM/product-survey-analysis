@@ -54,7 +54,6 @@ calculated values.
                 print(f"Unexpected error: {e}")
                 return None
 
-
 def check_data(data):
     """
     Checks if the provided data is eligible for analysis. 
@@ -95,7 +94,6 @@ def check_data(data):
         print(f"Unexpected error: {e}")
         return None
 
-
 # This line of code opts-in to a future change how pandas handles downcasting
 # with this line of code the "FutureWarning:.." in the terminal doesn't get shown
 pd.set_option('future.no_silent_downcasting', True)
@@ -113,7 +111,6 @@ def transform_data(data):
         )
     return new_data
 
-
 def return_questions(data):
     """
     This function will count the number of questions in the provided data and
@@ -128,7 +125,7 @@ def return_questions(data):
     for col in data.columns.drop("Product"):
         print(f"Question{i}: {col}")
         i += 1
-
+    print("/n")
 
 def count_products(data):
     """
@@ -144,17 +141,16 @@ def count_products(data):
     print("\n")    
     return list_products
 
-
 def print_legend():
     print(f"""
+--------------------------------------------------------------------------------
 Legend for results of analysis:\n
-    1 = Very unhappy
-    2 = Unhappy
-    3 = Neutral
-    4 = Happy
-    5 = Very happy\n
+1 = Very unhappy
+2 = Unhappy
+3 = Neutral
+4 = Happy
+5 = Very happy\n
     """)
-
 
 def calculate_mean_questions(data):
     """
@@ -168,7 +164,6 @@ Here are the mean values for each question:\n
 {mean_questions}\n
     """)
 
-
 def find_mode_questions(data):
     """
     Function to find the mode for each question asked, and print the findings
@@ -181,7 +176,6 @@ def find_mode_questions(data):
     for question, mode in mode_questions.iloc[0].items():
         print(f"{question}: {mode}")
     print("\n")
-
 
 def calculate_mean_products(data, list_products):
     """
@@ -201,7 +195,6 @@ Here are the mean values for each product:\n
 {pd.Series(mean_products)}\n
     """)
 
-
 def find_mode_products(data, list_products):
     """
     This function finds the mode for each product and
@@ -214,7 +207,6 @@ def find_mode_products(data, list_products):
         all_rows = product_row.stack()
         mode_product = all_rows.mode()[0]
         print(f"{product}: {mode_product}")
-
 
 def start_analysis(num_data, clean_data, list_products):
     """
@@ -256,7 +248,6 @@ def start_analysis(num_data, clean_data, list_products):
     # Goes back to main menu to insert new file
     elif sub_menu_choice == "[n] Insert new File":
         main()
-
 
 def main():
     """
@@ -315,7 +306,5 @@ or press the "e" button on your keyboard.
         if back_main_menu_choice == "[b] Back to Main Menu":
             main()
 
-
-#Start the program
 if __name__=="__main__":
     main()
