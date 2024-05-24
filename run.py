@@ -229,9 +229,7 @@ def start_analysis(num_data, clean_data, list_products):
     watch each analysis individually or to insert a new file for analysis
     """
         #Deefine parameters for sub menu and back menu/button
-        sub_options = [
-        "[q] Analysis Questions", "[p] Analysis Products", "[n] Insert new File"
-        ]
+        sub_options = ["[q] Analysis Questions", "[p] Analysis Products", "[n] Insert new File"]
         back_sub = ["[b] Back to Sub Menu"]
         sub_menu = TerminalMenu(sub_options)
         back_sub_menu = TerminalMenu(back_sub)
