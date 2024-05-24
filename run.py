@@ -228,37 +228,37 @@ def start_analysis(num_data, clean_data, list_products):
     question and product. It also provides a menu where the user can choose to 
     watch each analysis individually or to insert a new file for analysis
     """
-        #Deefine parameters for sub menu and back menu/button
-        sub_options = ["[q] Analysis Questions", "[p] Analysis Products", "[n] Insert new File"]
-        back_sub = ["[b] Back to Sub Menu"]
-        sub_menu = TerminalMenu(sub_options)
-        back_sub_menu = TerminalMenu(back_sub)
-        # Show submenu for individual analysis
-        sub_menu_index = sub_menu.show()
-        sub_menu_choice = sub_options[sub_menu_index]
-        # Start analysis for questions
-        if sub_menu_choice == "[q] Analysis Questions":
-            print_legend()
-            calculate_mean_questions(num_data)
-            find_mode_questions(clean_data)
-            back_sub_index = back_sub_menu.show()
-            back_sub_choice = back_sub[back_sub_index]
-            # Offer option to go back to sub menu
-            if back_sub_choice == "[b] Back to Sub Menu":
-                start_analysis(num_data, clean_data, list_products)
-        # Start analysis for products
-        elif sub_menu_choice == "[p] Analysis Products":
-            print_legend()
-            calculate_mean_products(num_data, list_products)
-            find_mode_products(clean_data, list_products)
-            back_sub_index = back_sub_menu.show()
-            back_sub_choice = back_sub[back_sub_index]
-            # Offer option to go back to sub menu
-            if back_sub_choice == "[b] Back to Sub Menu":
-                start_analysis(num_data, clean_data, list_products)
-        # Goes back to main menu to insert new file
-        elif sub_menu_choice == "[n] Insert new File":
-            main()
+    #Deefine parameters for sub menu and back menu/button
+    sub_options = ["[q] Analysis Questions", "[p] Analysis Products", "[n] Insert new File"]
+    back_sub = ["[b] Back to Sub Menu"]
+    sub_menu = TerminalMenu(sub_options)
+    back_sub_menu = TerminalMenu(back_sub)
+    # Show submenu for individual analysis
+    sub_menu_index = sub_menu.show()
+    sub_menu_choice = sub_options[sub_menu_index]
+    # Start analysis for questions
+    if sub_menu_choice == "[q] Analysis Questions":
+        print_legend()
+        calculate_mean_questions(num_data)
+        find_mode_questions(clean_data)
+        back_sub_index = back_sub_menu.show()
+        back_sub_choice = back_sub[back_sub_index]
+        # Offer option to go back to sub menu
+        if back_sub_choice == "[b] Back to Sub Menu":
+            start_analysis(num_data, clean_data, list_products)
+    # Start analysis for products
+    elif sub_menu_choice == "[p] Analysis Products":
+        print_legend()
+        calculate_mean_products(num_data, list_products)
+        find_mode_products(clean_data, list_products)
+        back_sub_index = back_sub_menu.show()
+        back_sub_choice = back_sub[back_sub_index]
+        # Offer option to go back to sub menu
+        if back_sub_choice == "[b] Back to Sub Menu":
+            start_analysis(num_data, clean_data, list_products)
+    # Goes back to main menu to insert new file
+    elif sub_menu_choice == "[n] Insert new File":
+        main()
 
 
 def main():
