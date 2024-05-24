@@ -269,12 +269,12 @@ or press the "e" button on your keyboard.
             print_legend()
             calculate_mean_questions(num_data)
             find_mode_questions(clean_data)
-        
+        # Start analysis for products
         elif sub_menu_choice == "[p] Analysis Products":
             print_legend()
             calculate_mean_products(num_data, list_products)
             find_mode_products(clean_data, list_products)
-        
+        # Goes back to main menu to insert new file
         elif sub_menu_choice == "[n] Insert new File":
             main()
 
