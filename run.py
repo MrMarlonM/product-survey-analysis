@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 from io import BytesIO
+import validators
 
 def get_user_input():
     """
@@ -8,44 +9,46 @@ def get_user_input():
     happening whilst loading, like a wrong url and whilst parsing
     like a wrong format. Afterwards it returns the raw data
     """
-    print(f"""
+    while True:
+        print(f"""
 You need to put in the direct URL to your survey data, stored publicly.
 The link must provide the raw data, not the document to download.
-You can use for example github or dropbox and click on raw data to open the 
+You can use for example github or dropbox and click on "raw data" to open the 
 right URL. 
 The file needs to be formatted as CSV (Comma-Separated Values).
 After providing the file, the analysis will run and put out the calculated values.
-    """)
-    url = input('Put in your URL here:')
-    
-    # Try part requests the data from stated url and checks if the HTTP status
-    # is in the success range 
-    # Uses pandas and to read the content of page and BytesIO to convert bytes
-    # sent from the url in readable format for pandas
-    try:
-        print("Loading your file...\n")
-        response = requests.get(url)
-        response.raise_for_status()
+        """)
+        url = input('Put in your URL here:')
         
-        raw_data = pd.read_csv(BytesIO(response.content))
-        print("The file was loaded successfully!\n")
-        return(raw_data)
-    
-    # Displays error when something goes wrong with the HTTP request like a wrong
-    # URL or a timeout
-    except requests.exceptions.RequestException as e:
-        print(f"Couldn't download file. Please make sure URL is correct: {e}")
-        return None
-    
-    # Displays error when file isn't correctly structured or data type is wrong
-    except pd.errors.ParserError as e:
-        print(f"Couldn't read file. Please ensure the file is a CSV file and try again: {e}")
-        return None
-    
-    # Displays all errors that could happen and aren't catched before
-    except Exception as e:
-        print(f"Unexpected error: {e}")
-        return None
+        if validators.url(url):
+            # Try part requests the data from stated url and checks if the HTTP status
+            # is in the success range 
+            # Uses pandas and to read the content of page and BytesIO to convert bytes
+            # sent from the url in readable format for pandas
+            try:
+                print("Loading your file...\n")
+                response = requests.get(url)
+                response.raise_for_status()
+                
+                raw_data = pd.read_csv(BytesIO(response.content))
+                print("The file was loaded successfully!\n")
+                return raw_data
+            
+            # Displays error when something goes wrong with the HTTP request like a wrong
+            # URL or a timeout
+            except requests.exceptions.RequestException as e:
+                print(f"Couldn't download file. Please make sure URL is correct: {e}")
+                return None
+            
+            # Displays error when file isn't correctly structured or data type is wrong
+            except pd.errors.ParserError as e:
+                print(f"Couldn't read file. Please ensure the file is a CSV file and try again: {e}")
+                return None
+            
+            # Displays all errors that could happen and aren't catched before
+            except Exception as e:
+                print(f"Unexpected error: {e}")
+                return None
 
 
 def check_data(data):
