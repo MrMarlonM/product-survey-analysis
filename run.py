@@ -125,7 +125,7 @@ def return_questions(data):
     for col in data.columns.drop("Product"):
         print(f"Question{i}: {col}")
         i += 1
-    print("/n")
+    print("\n")
 
 def count_products(data):
     """
@@ -144,7 +144,7 @@ def count_products(data):
 def print_legend():
     print(f"""
 --------------------------------------------------------------------------------
-Legend for results of analysis:\n
+Legend for results of analysis:
 1 = Very unhappy
 2 = Unhappy
 3 = Neutral
@@ -160,7 +160,7 @@ def calculate_mean_questions(data):
     mean_questions = data.drop(columns=["Product"]).mean()
     
     print(f"""
-Here are the mean values for each question:\n
+Here are the mean values for each question:
 {mean_questions}\n
     """)
 
@@ -172,7 +172,7 @@ def find_mode_questions(data):
     mode_questions = data.drop(columns=["Product"]).mode()
     # Prints the mode for each question more readable to the console than the 
     # Dataframe that gets returned to mode_questions
-    print("Here is the mode for each question:\n")
+    print("Here is the mode for each question:")
     for question, mode in mode_questions.iloc[0].items():
         print(f"{question}: {mode}")
     print("\n")
@@ -191,7 +191,7 @@ def calculate_mean_products(data, list_products):
         mean_products[product] = mean_product
     
     print(f"""
-Here are the mean values for each product:\n
+Here are the mean values for each product:
 {pd.Series(mean_products)}\n
     """)
 
@@ -200,13 +200,14 @@ def find_mode_products(data, list_products):
     This function finds the mode for each product and
     gives them out to the terminal
     """
-    print(f"Here is the mode for each product:\n")
+    print(f"Here is the mode for each product:")
 
     for product in list_products:
         product_row = data[data["Product"] == product].drop(columns=["Product"])
         all_rows = product_row.stack()
         mode_product = all_rows.mode()[0]
         print(f"{product}: {mode_product}")
+    print("\n")
 
 def start_analysis(num_data, clean_data, list_products):
     """
@@ -232,21 +233,17 @@ def start_analysis(num_data, clean_data, list_products):
             print_legend()
             calculate_mean_questions(num_data)
             find_mode_questions(clean_data)
+            # Offer option to go back to sub menu
             back_sub_index = back_sub_menu.show()
             back_sub_choice = back_sub[back_sub_index]
-            # Offer option to go back to sub menu
-            if back_sub_choice == "[b] Back to Sub Menu":
-                start_analysis(num_data, clean_data, list_products)
         # Start analysis for products
         elif sub_menu_choice == "[p] Analysis Products":
             print_legend()
             calculate_mean_products(num_data, list_products)
             find_mode_products(clean_data, list_products)
+            # Offer option to go back to sub menu
             back_sub_index = back_sub_menu.show()
             back_sub_choice = back_sub[back_sub_index]
-            # Offer option to go back to sub menu
-            if back_sub_choice == "[b] Back to Sub Menu":
-                start_analysis(num_data, clean_data, list_products)
         # Goes back to main menu to insert new file
         elif sub_menu_choice == "[b] Back to Main Menu":
             quitting = True
@@ -289,19 +286,19 @@ press the "e" button on your keyboard.
             start_analysis(num_data, clean_data, list_products)
         # Shows the explanation how to use the program properly
         elif main_menu_choice == "[e] Show Explanation":
-            print(f"""
-    1. You need to put in the direct URL to your survey data, which should be
-        stored publicly aviable.
-
-    2. The link must provide the raw data, not the document to download.
-        You can use for example github or dropbox and click on "raw data" 
-        to open the right URL. 
-
-    3. The file needs to be formatted as CSV (Comma-Separated Values).
-        After providing the file, the analysis will run and put out the 
-        calculated values.
-            """)
             print_legend()
+            print(f"""
+1. You need to put in the direct URL to your survey data, which should be
+    stored publicly aviable.
+
+2. The link must provide the raw data, not the document to download.
+    You can use for example github or dropbox and click on "raw data" 
+    to open the right URL. 
+
+3. The file needs to be formatted as CSV (Comma-Separated Values).
+    After providing the file, the analysis will run and put out the 
+    calculated values.
+            """)
             #Offer a menu/button to go back to main menu
             back_main_menu_index = back_main_menu.show()
             back_main_menu_choice = back_main[back_main_menu_index]
