@@ -14,13 +14,9 @@ def get_user_input():
     while True:
         print(f"""
 --------------------------------------------------------------------------------        
-You need to put in the direct URL to your survey data, stored publicly.
-The link must provide the raw data, not the document to download.
-You can use for example github or dropbox and click on "raw data" to open the 
-right URL. 
-The file needs to be formatted as CSV (Comma-Separated Values).
-After providing the file, the analysis will run and put out the
-calculated values.
+Put in the URL for your raw CSV file containing your survey data. Please make
+sure you read the explanation and that the provided URL is correct. 
+Enjoy! 
         """)
         url = input('Put in your URL here:')
         
@@ -117,7 +113,10 @@ def return_questions(data):
     return the number of questions asked together with the individual questions 
     to the terminal
     """
-    print("Here is an overview of the data provided:\n")
+    print(f"""
+--------------------------------------------------------------------------------    
+Here is an overview of the data provided:\n
+    """)
     number_questions = len(data.columns) - 1
     print(f"Your survey asks {number_questions} different questions:")
     
@@ -286,7 +285,6 @@ press the "e" button on your keyboard.
             start_analysis(num_data, clean_data, list_products)
         # Shows the explanation how to use the program properly
         elif main_menu_choice == "[e] Show Explanation":
-            print_legend()
             print(f"""
 1. You need to put in the direct URL to your survey data, which should be
     stored publicly aviable.
@@ -296,8 +294,14 @@ press the "e" button on your keyboard.
     to open the right URL. 
 
 3. The file needs to be formatted as CSV (Comma-Separated Values).
-    After providing the file, the analysis will run and put out the 
-    calculated values.
+    
+4. After running the analyis, the program will then give you an overview for 
+    your data. It will list the different questions and the products surveyed.
+
+5. You can then over the sub menu look up the analysis for the individual 
+    questions and the individual products. 
+
+6. To insert a new file, just go back to the main menu and click on start again.
             """)
             #Offer a menu/button to go back to main menu
             back_main_menu_index = back_main_menu.show()
