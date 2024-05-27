@@ -127,6 +127,11 @@ The reason for this was that to go back to the previous menu the function contai
 *Solution:*  
 To solve the issue, the functionality of the `simple-term-menu library` was used, that a menu point that has no further defined functionality opens the previous menu again when chosen. 
 
+## Testing
+Please go to the [TESTING.md](TESTING.md) file for the documentation of the project.
+
+
+
 ## Credits
 The following sources helped me immensely whilst creating this project:
 -  For working with the `pandas` library:
