@@ -7,6 +7,19 @@ Click here for the deployed version on Heroku:
 - [Product-Survey-Analysis](https://product-survey-analysis-0eda41c09d36.herokuapp.com/)
 
 ## How to Use the Program
+### Software Requirements
+The following version of python:
+- Python 3.12.3
+
+The following libraries need to be installed to run the program:
+- numpy version 1.26.4
+- pandas version 2.2.2
+- pytz version 2024.1
+- tzdata version 2024.1
+- requests version 2.31.0
+- validators version 0.28.2
+- simple-term-menu version 1.6.4
+
 ### Data Requirements
 - The survey data needs to be in CSV (Comma-Separated-Values) format.
 - The data needs to be provided as a URL.
@@ -130,7 +143,38 @@ To solve the issue, the functionality of the `simple-term-menu library` was used
 ## Testing
 Please go to the [TESTING.md](TESTING.md) file for the documentation of the project.
 
+## Deployment
+### Heroku
+The program was deployed to Heroku and can be found [here](https://product-survey-analysis-0eda41c09d36.herokuapp.com/).  
 
+To deploy the project the following steps need to be taken:
+- Create a new [GitHub](https://github.com/) repository.
+- Open the new repository in your editor (Gitpod, VSCode, etc.)
+- Clone this repository using the following git command:
+    - `https://github.com/MrMarlonM/product-survey-analysis.git`
+- Push the cloned version to GitHub using `git push`
+- Log in to your [Heroku](https://dashboard.heroku.com/) account or create a new one
+- Go to your dashboard, click on new and choose the option `Create new app`
+- After creating the app click on `Deploy` in the menu
+- Click on GitHub as `Deployment method`
+- Link your GitHub account and choose the newly created repository
+- Now click on `Settings` and click on `Reveal Config Vars`
+- Enter for `Key` the text `PORT`and for `Value` the number `8000`
+- Click on `Add buildpack` and add the following build packs in the exact order:
+    - heroku/python
+    - heroku/nodejs
+- Go back to the tab `Deploy` and scroll to the bottom of the page to click on `Deploy Branch`
+- After completing the deployment process click on the button `View`
+
+### Gitpod
+To run the program on Gitpod locally, go through the following steps:
+- Open Gitpod 
+- Clone this repository using the following git command:
+    - `https://github.com/MrMarlonM/product-survey-analysis.git`
+- Install the needed libraries using the following pip command:
+    - `pip install -r requirements.txt`
+- Start the program in the terminal using the following command:
+    - `python3 run.py`
 
 ## Credits
 The following sources helped me immensely whilst creating this project:
@@ -147,4 +191,4 @@ The following sources helped me immensely whilst creating this project:
  
 ## Acknowledgments
 - I want to thank [Iuliia Konovalova](https://github.com/IuliiaKonovalova) for her guidance and support throughout this project.
-- Many thanks to [Code Institute](https://codeinstitute.net/) for providing the learning content.
+- Many thanks to [Code Institute](https://codeinstitute.net/) for providing the learning content and the used mock terminal.
