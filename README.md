@@ -1,7 +1,10 @@
 # Product Survey Analysis
 This program will help you analyze your product survey for you!  
 Just provide your CSV file with the raw data and wait for the program to
-calculate the information you need. 
+calculate the information you need.  
+
+Click here for the deployed version on Heroku:
+- [Product-Survey-Analysis](https://product-survey-analysis-0eda41c09d36.herokuapp.com/)
 
 ## How to Use the Program
 ### Data Requirements
@@ -69,6 +72,27 @@ After clicking on each of the analysis options a `[b] Back to Sub Menu` option i
 - I want to analyze more surveys easily
 - I want to download the result
 - I want to get a more in-depth analysis
+
+## Technologies Used
+### Languages
+- [Python 3.12.3:](https://www.python.org/downloads/release/python-3123/) For the logic of the program and the output to the terminal
+- [Javascript:](https://www.javascript.com/) To run the script needed for the Code Institute mock terminal
+- [HTML:](https://developer.mozilla.org/en-US/docs/Web/HTML) For the construction of the provided Code Institute mock terminal
+
+### Python Libraries
+- [io](https://docs.python.org/3/library/io.html) to import `BytesIO` to translate bytes sent by the provided document
+- [requests](https://pypi.org/project/requests/) to get the document from the given URL into the program
+- [validators](https://pypi.org/project/validators/) to validate that the provided user input is a URL
+- [pandas](https://pypi.org/project/pandas/) to analyze the data and transform it into a useable format
+- [simple-term-menu](https://pypi.org/project/simple-term-menu/) to create the menu functionality in the terminal
+
+### Tools
+- [Gitpod](https://www.gitpod.io/) for writing and editing the code
+- [Git](https://git-scm.com/) for the version control of the program
+- [GitHub](https://github.com/) for hosting the code of the program
+- [Heroku](https://dashboard.heroku.com/) for deploying the program
+- [FreeConvert](https://www.freeconvert.com/) for converting images into webp-format
+- [Lucidchart](https://www.lucidchart.com/) for creating a Flow Chart of the program
 
 ## Bugs
 ### Solved Bugs
