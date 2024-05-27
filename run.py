@@ -141,6 +141,7 @@ def count_products(data):
     return list_products
 
 def print_legend():
+    """Prints the legend to the console"""
     print(f"""
 --------------------------------------------------------------------------------
 Legend for results of analysis:
