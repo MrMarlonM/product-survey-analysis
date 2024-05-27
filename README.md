@@ -47,6 +47,11 @@ The function `find_mode_questions(clean_data)` returned numerical values instead
 To solve the problem, the data provided to the function was copied to a new variable named `new_variable`. Then it was transformed and returned. With that, both sets of data, one with strings and one with integers, stay in existence.
 
 - *Bug 4:*  
+When printing the output to the console, the `find_mode_products` function gave out some extra zeros, which made it look very messy and unclear. The problem could be tracked down to the behavior of the returned `pandas` DataFrame which seemed to return extra modes for each row.
+*Solution:*  
+To solve the issue, in the function, it was defined that only the first input of the stacked rows was used to calculate the mean. With that, the zero values weren't calculated anymore and were not given out to the console.
+
+- *Bug 5:*  
 When trying to quit the program over the `simple-term-menu` or going back from the sub menu to the main menu, you needed to click the `[q] Quit` button or the `[b] Back to Main Menu` button as often as you had clicked on a other menu point before.
 The reason for this was that to go back to the previous menu the function containing all the logic of that menu was called again. Through this, another loop was laid on top of the previous loop and now both needed to be to quit before actually quitting the program.
 *Solution:*  
