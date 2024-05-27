@@ -19,7 +19,7 @@ calculate the information you need.
     - Happy
     - Very happy
 
-Rows that contain answers that are not part of the allowed group will be deleted completely. Please make sure that the provided data is mostly correct to gain as statistically valuable as possible insights. 
+Rows that contain answers that are not part of the allowed group, make sure to use the exact spelling, will be deleted completely. Please make sure that the provided data is mostly correct to gain as statistically valuable as possible insights. 
 
 Here is a picture of example data that meets the requirements:  
 
@@ -97,3 +97,20 @@ When trying to quit the program over the `simple-term-menu` or going back from t
 The reason for this was that to go back to the previous menu the function containing all the logic of that menu was called again. Through this, another loop was laid on top of the previous loop and now both needed to be to quit before actually quitting the program.
 *Solution:*  
 To solve the issue, the functionality of the `simple-term-menu library` was used, that a menu point that has no further defined functionality opens the previous menu again when chosen. 
+
+## Credits
+The following sources helped me immensely whilst creating this project:
+-  For working with the `pandas` library:
+    - [w3schools](https://www.w3schools.com/python/pandas/default.asp)
+    - [Spark By {Examples}](https://sparkbyexamples.com/pandas/pandas-filter-rows-by-conditions/#google_vignette)
+    - [Data to Fish](https://datatofish.com/average-column-row-dataframe/)
+    - [Pandas Documentation](https://pandas.pydata.org/docs/user_guide/text.html)
+- [Scribbr](https://www.scribbr.com/statistics/descriptive-statistics/) for the used calculations
+- For implementation of `requests` the [official documentation](https://requests.readthedocs.io/en/latest/user/quickstart/)
+- For implementation of the `simple-term-menu`:
+    - The [official documentation](https://pypi.org/project/simple-term-menu/)
+    - This [YouTube video by Chad Thackray](https://www.youtube.com/watch?v=Zpa-rc9e388)
+ 
+## Acknowledgments
+- I want to thank [Iuliia Konovalova](https://github.com/IuliiaKonovalova) for her guidance and support throughout this project.
+- Many thanks to [Code Institute](https://codeinstitute.net/) for providing the learning content.
