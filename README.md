@@ -3,18 +3,8 @@ This program will help you analyze your product survey for you!
 Just provide your CSV file with the raw data and wait for the program to
 calculate the information you need. 
 
-## User Stories
-### First Time Visitor
-- I want to understand the purpose of the program
-- I want to be able to directly start analyzing some data
-- I want to get a clear and concise instruction
-
-### Frequent Visitor 
-- I want to analyze more surveys easily
-- I want to download the result
-- I want to get a more in-depth analysis
-
-## Data Requirements
+## How to Use the Program
+### Data Requirements
 - The survey data needs to be in CSV (Comma-Separated-Values) format.
 - The data needs to be provided as a URL.
 - The URL needs to link directly to the raw data on a publicly available site like Github or Dropbox for example.
@@ -28,6 +18,57 @@ calculate the information you need.
     - Neutral
     - Happy
     - Very happy
+
+Rows that contain answers that are not part of the allowed group will be deleted completely. Please make sure that the provided data is mostly correct to gain as statistically valuable as possible insights. 
+
+Here is a picture of example data that meets the requirements:  
+
+![Picture of sample data that meets the requirements](documentation/example-data.webp)
+
+### User Guide
+When starting the program the user will be presented the start screen with a welcome message and a menu with three options to choose from. 
+
+![Picture of the welcome screen](documentation/welcome-screen.webp)
+
+When clicking on the `[q] Quit` option the program ends and needs to be restarted.  
+For a short introduction how to use the program properly the `[e] Show Explanation` option is provided which brings the user to the following screen:   
+
+![image of the explanation screen](documentation/explanation.webp)  
+
+When clicking `Back to Main Menu` the user gets again the Main Menu from the beginning presented and can start the program.  
+After starting the program the user gets asked to provide the URL to the raw data of the survey data.
+
+![image of the URL question](documentation/url-input2.webp)
+
+After providing the URL and pressing enter the first part of the analysis runs and provides the user with a short overview of the data. The different questions asked in the survey are shown and the products mentioned in the survey are listed.
+
+![Image of the overview screen](documentation/overview-analysis.webp)
+
+In the presented sub-menu the user can then choose between the analysis for the questions and the analysis for the products. Also, the user has the option to go back to the main menu to look again at the explanation, insert a new file or quit the program.  
+Here is an example of the provided analysis for the questions:
+
+![Image 1 of analysis questions](documentation/analysis-questions1.webp)
+
+![Image 2 of analysis questions](documentation/analysis-questions2.webp)
+
+When clicking on `[p] Analysis Products` the following output is presented to the user:
+
+![Image 1 of analysis products](documentation/analysis-products1.webp)
+
+![Image 2 of analysis products](documentation/analysis-products2.webp)
+
+After clicking on each of the analysis options a `[b] Back to Sub Menu` option is provided that brings the user back to the sub-menu to look at the other analysis option, the overview or to go back to the main menu.
+
+## User Stories
+### First Time Visitor
+- I want to understand the purpose of the program
+- I want to be able to directly start analyzing some data
+- I want to get a clear and concise instruction
+
+### Frequent Visitor 
+- I want to analyze more surveys easily
+- I want to download the result
+- I want to get a more in-depth analysis
 
 ## Bugs
 ### Solved Bugs
