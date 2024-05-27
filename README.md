@@ -62,6 +62,11 @@ When clicking on `[p] Analysis Products` the following output is presented to th
 
 After clicking on each of the analysis options a `[b] Back to Sub Menu` option is provided that brings the user back to the sub-menu to look at the other analysis option, the overview or to go back to the main menu.
 
+## Flowchart
+The logic of the program can be seen in the presented flow chart:
+
+![Flow chart of the program](documentation/flowchart.webp)
+
 ## User Stories
 ### First Time Visitor
 - I want to understand the purpose of the program
