@@ -38,17 +38,17 @@ Enjoy!
             # URL or a timeout
             except requests.exceptions.RequestException as e:
                 print(f"Couldn't download file. Please make sure URL is correct: {e}")
-                break
+                return None
             
             # Displays error when file isn't correctly structured or data type is wrong
             except pd.errors.ParserError as e:
                 print(f"Couldn't read file. Please ensure the file is a CSV file and try again: {e}")
-                break
+                return None
             
             # Displays all errors that could happen and aren't catched before
             except Exception as e:
                 print(f"Unexpected error: {e}")
-                break
+                return None
 
 def check_data(data):
     """
@@ -278,12 +278,18 @@ press the "e" button on your keyboard.
         if main_menu_choice == "[s] Start":
             # Get data from user and prepare data for analysis
             raw_data = get_user_input()
-            clean_data = check_data(raw_data)
-            return_questions(clean_data) 
-            list_products = count_products(clean_data)
-            num_data = transform_data(clean_data)
-            #Analyze the given data
-            start_analysis(num_data, clean_data, list_products)
+            # Check that raw_data is valid before continuing the program
+            if raw_data is None:
+                print("An Error occured please check the console and try again.")
+                continue
+            else: 
+                clean_data = check_data(raw_data)
+                return_questions(clean_data) 
+                list_products = count_products(clean_data)
+                num_data = transform_data(clean_data)
+                #Analyze the given data
+                start_analysis(num_data, clean_data, list_products)
+                
         # Shows the explanation how to use the program properly
         elif main_menu_choice == "[e] Show Explanation":
             print(f"""
