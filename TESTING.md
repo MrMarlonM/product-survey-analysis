@@ -49,3 +49,5 @@ At last, I tested the error handling through some possible wrong user input.
 | Typo in URL  | Show custom error message to inform user and go back to Main Menu | Yes |
 | Wrong file format | Show custom error message to inform user and go back to Main Menu | Yes |
 | Wrong answers in data or missing values | Delte rows with wrong input or missing input and proceed analysis | Yes |
+| Product column in data missing | Show custom error message and go back to Main Menu | Yes |
+| No questions in data | Show custom error message and go back to Main Menu | Yes |
