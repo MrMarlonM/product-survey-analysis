@@ -318,12 +318,19 @@ An Error occured please check the console and try again.
                 """)
                 continue
             else:
+                # Check that clean data is valid before continuing the program
                 clean_data = check_data(raw_data)
-                return_questions(clean_data)
-                list_products = count_products(clean_data)
-                num_data = transform_data(clean_data)
-                # Analyze the given data
-                start_analysis(num_data, clean_data, list_products)
+                if clean_data is None:
+                    print("""
+An Error occured please check the console and try again.
+                    """)
+                    continue
+                else:
+                    return_questions(clean_data)
+                    list_products = count_products(clean_data)
+                    num_data = transform_data(clean_data)
+                    # Analyze the given data
+                    start_analysis(num_data, clean_data, list_products)
 
         # Shows the explanation how to use the program properly
         elif main_menu_choice == "[e] Show Explanation":
