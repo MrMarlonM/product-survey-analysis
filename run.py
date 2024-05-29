@@ -1,8 +1,8 @@
+from io import BytesIO
+from simple_term_menu import TerminalMenu
+import validators
 import requests
 import pandas as pd
-from io import BytesIO
-import validators
-from simple_term_menu import TerminalMenu
 
 
 def get_user_input():
@@ -80,8 +80,12 @@ There are no questions in the data, please add at least one
 
         # The allowed answers for the survey can be changed here
         allowed_answers = [
-            "Very unhappy", "Unhappy", "Neutral", "Happy", "Very happy"
-            ]
+            "Very unhappy",
+            "Unhappy",
+            "Neutral",
+            "Happy",
+            "Very happy"
+        ]
 
         # Checks that the provided answers are part of the allowed options
         # for every column exept the "Product" column
