@@ -6,8 +6,7 @@ calculate the information you need.
 Click here for the deployed version on Heroku:
 - [Product-Survey-Analysis](https://product-survey-analysis-0eda41c09d36.herokuapp.com/)
 
-## How to Use the Program
-### Software Requirements
+## Software Requirements
 The following version of python:
 - Python 3.12.3
 
@@ -20,7 +19,7 @@ The following libraries need to be installed to run the program:
 - validators version 0.28.2
 - simple-term-menu version 1.6.4
 
-### Data Requirements
+## Data Requirements
 - The survey data needs to be in CSV (Comma-Separated-Values) format.
 - The data needs to be provided as a URL.
 - The URL needs to link directly to the raw data on a publicly available site like Github or Dropbox for example.
@@ -52,7 +51,7 @@ Here is a picture of example data that meets the requirements:
 - I want to download the result
 - I want to get a more in-depth analysis
 
-### User Guide
+## User Guide
 When starting the program the user will be presented the start screen with a welcome message and a menu with three options to choose from. 
 
 ![Picture of the welcome screen](documentation/welcome-screen.webp)
