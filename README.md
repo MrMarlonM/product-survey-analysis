@@ -1,5 +1,5 @@
 # Product Survey Analysis
-This program will help you analyze your product survey for you!  
+This program will help you analyze your product survey!  
 Just provide your CSV file with the raw data and wait for the program to
 calculate the information you need.  
 

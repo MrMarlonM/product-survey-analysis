@@ -105,11 +105,6 @@ There are no questions in the data, please add at least one
         return None
 
 
-# This line of code opts-in to a future change how pandas handles downcasting
-# with this line of code the "FutureWarning:.." doesn't get shown
-pd.set_option('future.no_silent_downcasting', True)
-
-
 def transform_data(data):
     """
     The function transforms text data into numerical values
@@ -138,10 +133,10 @@ Here is an overview of the data provided:\n
     number_questions = len(data.columns) - 1
     print(f"Your survey asks {number_questions} different questions:")
 
-    i = 1
+    counter = 1
     for col in data.columns.drop("Product"):
         print(f"Question{i}: {col}")
-        i += 1
+        counter += 1
     print("\n")
 
 
@@ -328,6 +323,10 @@ An Error occured please check the console and try again.
                 else:
                     return_questions(clean_data)
                     list_products = count_products(clean_data)
+                    # This line of code opts-in to a future change how pandas
+                    # handles downcasting with this line of code
+                    # the "FutureWarning:.." doesn't get shown
+                    pd.set_option('future.no_silent_downcasting', True)
                     num_data = transform_data(clean_data)
                     # Analyze the given data
                     start_analysis(num_data, clean_data, list_products)
