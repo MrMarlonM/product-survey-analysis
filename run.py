@@ -139,7 +139,7 @@ Here is an overview of the data provided:\n
 
     counter = 1
     for col in data.columns.drop("Product"):
-        print(f"Question{i}: {col}")
+        print(f"Question{counter}: {col}")
         counter += 1
     print("\n")
 
