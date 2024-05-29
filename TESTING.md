@@ -12,6 +12,8 @@ For testing purposes, I used a file containing testing data that can be found [h
 
 The testing data contains intentionally some missing values and some wrong answers to demonstrate that the program is able to sort out the faulty rows and proceed with the analysis as intended.
 
+For testing the user input validation, two more sets of testing data are provided. One without a column named product ([here](example-data-no-product.csv)) and one without at least one question asked ([here](example-data-one-row.csv)).
+
 ### Manual Testing
 To ensure the program is working as intended, I also tested the deployed project on Heroku. It can be found [here](https://product-survey-analysis-0eda41c09d36.herokuapp.com/).  
 I worked my way down from the first point of the Main Menu and tested every functionality down to the last possible option, then proceeded with the second option of the Main Menu and then tried the Quit option.  
@@ -41,7 +43,7 @@ At last, I tested the error handling through some possible wrong user input.
 | Press [q] for Quit | Stops the program | Yes | To restart reload windows or press "Run Program" |
 
 
-#### Input mistake response
+#### User input validation
 | Problem | What should happen? | Did it work? |
 | --- | --- | --- |
 | User presses enter without input | Loops the input request until input is provided | Yes |
