@@ -41,6 +41,17 @@ Here is a picture of example data that meets the requirements:
 
 ![Picture of sample data that meets the requirements](documentation/example-data.webp)
 
+## User Stories
+### First Time Visitor
+- I want to understand the purpose of the program
+- I want to be able to directly start analyzing some data
+- I want to get a clear and concise instruction
+
+### Frequent Visitor 
+- I want to analyze more surveys easily
+- I want to download the result
+- I want to get a more in-depth analysis
+
 ### User Guide
 When starting the program the user will be presented the start screen with a welcome message and a menu with three options to choose from. 
 
@@ -79,17 +90,6 @@ After clicking on each of the analysis options a `[b] Back to Sub Menu` option i
 The logic of the program can be seen in the presented flow chart:
 
 ![Flow chart of the program](documentation/flowchart.webp)
-
-## User Stories
-### First Time Visitor
-- I want to understand the purpose of the program
-- I want to be able to directly start analyzing some data
-- I want to get a clear and concise instruction
-
-### Frequent Visitor 
-- I want to analyze more surveys easily
-- I want to download the result
-- I want to get a more in-depth analysis
 
 ## Technologies Used
 ### Languages
