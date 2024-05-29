@@ -7,6 +7,10 @@ Here is the result of the PEP8 validator testing:
 
 ![Image of successful CI Python Linter test](documentation/pep8-validation.webp)
 
+Here is seen the end of the code with an empty line following:
+
+![Image of successful CI Python Linter test with shown extra line at the end](documentation/pep8-validation-end.webp)
+
 ### Testing Data
 For testing purposes, I used a file containing testing data that can be found [here](https://raw.githubusercontent.com/MrMarlonM/product-survey-analysis/main/example-data.csv).
 

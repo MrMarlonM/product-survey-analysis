@@ -115,12 +115,12 @@ The logic of the program can be seen in the presented flow chart:
 ## Bugs
 ### Solved Bugs
 - *Bug 1:*  
-Whilst testing the `get_user_input() function` and the `check_data() function` combined, a set of data that had no answer options in it was returned. After checking that the data returned from the `get_user_input() function` was correct, the problem could be narrowed down to the `check_data() function`. After checking that the code is correct and contains no typos, the error was found in the case sensitivity of the `allowed_answer list` and the data input it got compared against.  
+Whilst testing the function `get_user_input()` and the function `check_data()` combined, a set of data that had no answer options in it was returned. After checking that the data returned from the function `get_user_input()` was correct, the problem could be narrowed down to the function `check_data()`. After checking that the code is correct and contains no typos, the error was found in the case sensitivity of the list `allowed_answers` and the data input it got compared against.  
 *Solution:*   
-The problem was solved for this version by changing the content of the `allowed_answer_list` so that it matches the data. Also, the exact kind of data expected by the program gets stated in the readme under the point `Data Requirements`.
+The problem was solved for this version by changing the content of the list `allowed_answers` so that it matches the data. Also, the exact kind of data expected by the program gets stated in the readme under the point `Data Requirements`.
 
 - *Bug 2:*  
-The initial version of `return_questions()` was called `count_questions()` and should have counted the number of questions and printed the individual questions to the console. The first part worked, but the second didn't. It only printed a complete list of all column headings to the console, instead of each question separately.
+The initial version of `return_questions()` was called `count_questions()` and should have counted the number of questions and printed the individual questions to the console. The first part worked, but the second didn't. It only printed a complete list of all column headings to the console, instead of each question separately.  
 *Solution:*  
 To solve the problem, the function was remodeled and simplified. Instead of a `for loop` that counts the number of questions, the length of `data_columns` gets subtracted by one. Also, the fact was used, that the `pandas library` allows it to print out the column heading directly through a `for loop` like this: `for col in data.columns: print col`. 
 
@@ -138,7 +138,7 @@ To solve the issue, in the function, it was defined that only the first input of
 When trying to quit the program over the `simple-term-menu` or going back from the sub menu to the main menu, you needed to click the `[q] Quit` button or the `[b] Back to Main Menu` button as often as you had clicked on a other menu point before.
 The reason for this was that to go back to the previous menu the function containing all the logic of that menu was called again. Through this, another loop was laid on top of the previous loop and now both needed to be to quit before actually quitting the program.
 *Solution:*  
-To solve the issue, the functionality of the `simple-term-menu library` was used, that a menu point that has no further defined functionality opens the previous menu again when chosen. 
+To solve the issue, the functionality of the library `simple-term-menu` was used, that a menu point that has no further defined functionality opens the previous menu again when chosen. 
 
 ## Testing
 Please go to the [TESTING.md](TESTING.md) file for the documentation of the project.
